@@ -62,8 +62,8 @@ router.get("/deletar_turma/:id", (req, res) => {
         .then(() => {
             res.redirect("/rota_turma/turma");
         })
-        .catch((err) => {
-            res.render("Esse turma não existe");
+        .catch((erro) => {
+            res.send("Essa turma não existe" + erro);
         });
 });
 
