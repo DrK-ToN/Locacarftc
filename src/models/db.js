@@ -6,4 +6,7 @@ const sequelize = new Sequelize("escola", "root", "root", {
 });
 
 //exportando as variáveis
-module.exports = { Sequelize: Sequelize, sequelize: sequelize };
+module.exports = {
+    Sequelize: Sequelize,
+    sequelize: sequelize,
+};

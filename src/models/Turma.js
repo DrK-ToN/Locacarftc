@@ -9,8 +9,13 @@ const Turma = db.sequelize.define(
             allowNull: false,
             primaryKey: true,
         },
-        descricao: { type: db.Sequelize.TEXT },
+        descricao: {
+            type: db.Sequelize.TEXT,
+        },
     },
-    { freezeTableName: true } //freezeTableName: true define o nome da tabela sem o S
-);
+    {
+        freezeTableName: true,
+    }
+);//freezeTableName: true define o nome da tabela sem o S
+
 module.exports = Turma;
