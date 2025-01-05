@@ -13,6 +13,11 @@ app.engine(".hbs", exphbs.engine({ defaultLayout: "main", extname: ".hbs" }));
 app.set("view engine", ".hbs");
 app.set("views", path.join(__dirname, "views"));
 
+//Rota principal
+app.get("/", (req, res) => {
+    res.render("home");
+});
+
 //Remanejando Rotas de cargo
 app.use("/rota_turma", rota_turma);
 
