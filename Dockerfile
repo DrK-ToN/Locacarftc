@@ -28,4 +28,4 @@ EXPOSE 3000
 
 # Comando para iniciar a aplicação
 # Lembre-se que seu `index.js` está dentro da pasta `src`
-CMD ["node", "src/index.js"]
+CMD ["nodemon", "src/index.js"]
