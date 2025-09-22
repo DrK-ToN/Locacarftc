@@ -20,4 +20,4 @@ COPY . .
 EXPOSE 3000
 
 # 7. Comando de inicialização: O comando que será executado quando o contêiner iniciar
-CMD [ "nodemon", "src/index.js" ]
+CMD [ "node", "src/index.js" ]
