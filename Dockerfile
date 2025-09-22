@@ -1,31 +1,23 @@
-# Estágio 1: Build da aplicação
-FROM node:20-alpine AS build
+# Dockerfile
+
+# 1. Imagem base: Comece com uma imagem oficial do Node.js (versão 20, slim para ser leve)
+FROM node:20-slim
+
+# 2. Diretório de trabalho: Crie e defina o diretório de trabalho dentro do contêiner
 WORKDIR /app
 
-# Copia package.json e package-lock.json para instalar dependências
+# 3. Copiar dependências: Copie o package.json e package-lock.json para o contêiner
+# Usamos o wildcard (*) para copiar ambos os arquivos.
 COPY package*.json ./
+
+# 4. Instalar dependências: Execute o npm install para baixar as dependências do projeto
 RUN npm install
 
-# Copia o restante do código da aplicação
+# 5. Copiar código-fonte: Copie o restante dos arquivos da sua aplicação para o diretório /app
 COPY . .
 
-# Se você tiver um passo de build (ex: para TypeScript, React, etc.)
-# RUN npm run build
-
-# Estágio 2: Produção - Imagem final e leve
-FROM node:20-alpine
-WORKDIR /app
-
-# Copia apenas as dependências de produção do estágio de build
-COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/package*.json ./
-
-# Copia o código da aplicação (ou a pasta de build, se houver)
-COPY --from=build /app/src ./src
-
-# Expõe a porta que sua aplicação usa
+# 6. Expor a porta: Informe ao Docker que o contêiner escutará na porta 3000
 EXPOSE 3000
 
-# Comando para iniciar a aplicação
-# Lembre-se que seu `index.js` está dentro da pasta `src`
-CMD ["nodemon", "src/index.js"]
+# 7. Comando de inicialização: O comando que será executado quando o contêiner iniciar
+CMD [ "nodemon", "src/index.js" ]

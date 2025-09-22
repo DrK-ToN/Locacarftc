@@ -24,9 +24,7 @@ app.use("/rota_turma", rota_turma);
 //Remanejando Rotas do aluno
 app.use("/rota_aluno", rota_aluno);
 
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(
-        "Servidor Rodando na em http://localhost:3000/rota_turma/turma\nhttp://localhost:3000/rota_aluno/aluno"
-    );
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Servidor rodando em 0.0.0.0:${PORT}`);
 });
