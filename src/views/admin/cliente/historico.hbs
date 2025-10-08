@@ -1,0 +1,45 @@
+{{! views/admin/cliente/historico.hbs }}
+<main>
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            {{! BLOCO PARA EXIBIR A MENSAGEM DE SUCESSO }}
+            {{#if success_msg}}
+                <div class="alert alert-success" role="alert">
+                    {{success_msg}}
+                </div>
+            {{/if}}
+
+            {{! BLOCO PARA EXIBIR A MENSAGEM DE ERRO }}
+            {{#if error_msg}}
+                <div class="alert alert-danger" role="alert">
+                    {{error_msg}}
+                </div>
+            {{/if}}
+
+            <h2>Histórico de Locações de: {{cliente.nome}}</h2>
+            <hr />
+            {{#if locacoes}}
+                {{#each locacoes}}
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h4><b>Veículo:</b>
+                                {{veiculo.marca}}
+                                {{veiculo.modelo}}
+                                - Placa:
+                                {{veiculo.placa}}</h4>
+                            <p><b>Data de Início:</b> {{data_inicio}}</p>
+                            <p><b>Data de Fim:</b>
+                                {{#if data_fim}}{{data_fim}}{{else}}Em andamento{{/if}}</p>
+                            <p><b>Valor:</b> R$ {{valor}}</p>
+                        </div>
+                    </div>
+                {{/each}}
+            {{else}}
+                <p>Nenhuma locação encontrada para este cliente.</p>
+            {{/if}}
+            <br />
+            <a href="/rota_cliente/cliente" class="btn btn-primary">Voltar para
+                a Lista de Clientes</a>
+        </div>
+    </div>
+</main>

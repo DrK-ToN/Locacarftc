@@ -1,0 +1,57 @@
+<main>
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h3> Editar Veículo: </h3>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/rota_veiculos/veiculos/editar_veiculo" method="POST">
+                        <input type="hidden" name="id_veiculo" value="{{veiculo.id_veiculo}}" />
+
+                        <label for="nome">Nome/Descrição: </label>
+                        <input type="text" id="nome" name="nome" class="form-control" value="{{veiculo.nome}}" /> [cite: 6, 7]
+                        <br />
+
+                        <label for="matricula">Matrícula: </label>
+                        <input type="text" id="matricula" name="matricula" class="form-control" value="{{veiculo.matricula}}" /> [cite: 9, 10]
+                        <br />
+
+                        <label for="marca">Marca: </label>
+                        <input type="text" id="marca" name="marca" placeholder="Marca do veículo" class="form-control" value="{{veiculo.marca}}" />
+                        <br />
+
+                        <label for="modelo">Modelo: </label>
+                        <input type="text" id="modelo" name="modelo" placeholder="Modelo do veículo" class="form-control" value="{{veiculo.modelo}}" />
+                        <br />
+
+                        <label for="ano">Ano: </label>
+                        <input type="text" id="ano" name="ano" placeholder="Ano do veículo" class="form-control" value="{{veiculo.ano}}" />
+                        <br />
+
+                        <label for="placa">Placa: </label>
+                        <input type="text" id="placa" name="placa" placeholder="Placa do veículo" class="form-control" value="{{veiculo.placa}}" />
+                        <br />
+
+                        <label for="disponibilidade">Disponibilidade:</label>
+                        <select name="disponibilidade" id="disponibilidade" class="form-control">
+                            <option value="true" {{#if veiculo.disponibilidade}}selected{{/if}}>Disponível</option>
+                            <option value="false" {{#unless veiculo.disponibilidade}}selected{{/unless}}>Indisponível</option>
+                        </select>
+                        <br />
+
+                        <label for="cliente">Cliente (Proprietário):</label>
+                        <select name="fk_cliente" class="custom-select form-control">
+                            {{#each clientes}}
+                                <option value="{{id_cliente}}" {{#if (eq ../veiculo.fk_cliente id_cliente)}}selected{{/if}}>{{nome}}</option>
+                            {{else}}
+                                <option value="">Nenhum cliente registrado</option>
+                            {{/each}}
+                        </select>
+                        <br />
+                        <br />
+                        <button type="submit" class="btn btn-success">Salvar Alterações</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

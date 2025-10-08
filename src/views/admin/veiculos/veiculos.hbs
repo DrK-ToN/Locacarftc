@@ -1,0 +1,64 @@
+{{! views/admin/veiculos/veiculo.hbs }}
+<main>
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h2>Lista de Veículos</h2>
+            <hr />
+            {{!-- Adicionar em views/admin/veiculos/veiculo.hbs --}}
+<form action="/rota_veiculos/veiculos" method="GET" class="mb-4">
+    <div class="row">
+        <div class="col-md-3">
+            <input type="text" name="marca" class="form-control" placeholder="Filtrar por marca..." value="{{query.marca}}">
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="modelo" class="form-control" placeholder="Filtrar por modelo..." value="{{query.modelo}}">
+        </div>
+        <div class="col-md-3">
+            <select name="disponibilidade" class="form-control">
+                <option value="">Todos</option>
+                <option value="true" {{#if (eq query.disponibilidade 'true')}}selected{{/if}}>Disponíveis</option>
+                <option value="false" {{#if (eq query.disponibilidade 'false')}}selected{{/if}}>Indisponíveis</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+            <a href="/rota_veiculos/veiculos" class="btn btn-secondary">Limpar</a>
+        </div>
+    </div>
+</form>
+            <a href="/rota_veiculos/veiculos/add">
+                <button class="btn btn-success">Novo Veículo</button>
+            </a>
+            {{#each veiculos}}
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h4><b>ID: </b>{{id_veiculo}}
+                            |
+                            <b>Nome:</b>
+                            {{nome}}</h4>
+                        <small><b>Matrícula: </b> {{matricula}} </small><br />
+                        <small><b>Marca: </b>
+                            {{marca}}
+                            |
+                            <b>Modelo:</b>
+                            {{modelo}}
+                            |
+                            <b>Ano:</b>
+                            {{ano}}
+                        </small><br />
+                        <small><b>Placa: </b> {{placa}} </small><br />
+                        <small><b>Cliente: </b> {{cliente.nome}} </small><br />
+
+                        <a href="/rota_veiculos/editar_veiculo/{{id_veiculo}}">
+                            <button class="btn btn-primary mt-3">Editar</button>
+                        </a>
+
+                        <a href="/rota_veiculos/deletar_veiculo/{{id_veiculo}}">
+                            <button class="btn btn-danger mt-3">Deletar</button>
+                        </a>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</main>

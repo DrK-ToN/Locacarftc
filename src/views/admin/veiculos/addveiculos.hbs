@@ -1,0 +1,101 @@
+{{! views/admin/veiculos/addveiculo.hbs }}
+<main>
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h3> Novo Veículo: </h3>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/rota_veiculos/veiculos/novo" method="POST">
+
+                        <label for="nome">Nome/Descrição: </label>
+                        <input
+                            type="text"
+                            id="nome"
+                            name="nome"
+                            placeholder="Ex: Carro da família"
+                            class="form-control"
+                        />
+                        <br />
+
+                        <label for="matricula">Matrícula: </label>
+                        <input
+                            type="text"
+                            id="matricula"
+                            name="matricula"
+                            placeholder="Matrícula do veículo"
+                            class="form-control"
+                        />
+                        <br />
+
+                        <label for="marca">Marca: </label>
+                        <input
+                            type="text"
+                            id="marca"
+                            name="marca"
+                            placeholder="Marca do veículo"
+                            class="form-control"
+                        />
+                        <br />
+
+                        <label for="modelo">Modelo: </label>
+                        <input
+                            type="text"
+                            id="modelo"
+                            name="modelo"
+                            placeholder="Modelo do veículo"
+                            class="form-control"
+                        />
+                        <br />
+
+                        <label for="ano">Ano: </label>
+                        <input
+                            type="text"
+                            id="ano"
+                            name="ano"
+                            placeholder="Ano do veículo"
+                            class="form-control"
+                        />
+                        <br />
+
+                        <label for="placa">Placa: </label>
+                        <input
+                            type="text"
+                            id="placa"
+                            name="placa"
+                            placeholder="Placa do veículo"
+                            class="form-control"
+                        />
+                        <br />
+
+                        <label for="disponibilidade">Disponibilidade:</label>
+                        <select
+                            name="disponibilidade"
+                            id="disponibilidade"
+                            class="form-control"
+                        >
+                            <option value="true" selected>Disponível</option>
+                            <option value="false">Indisponível</option>
+                        </select>
+                        <br />
+
+                        <label for="cliente">Cliente (Proprietário):</label>
+                        <select
+                            name="fk_cliente"
+                            class="custom-select form-control"
+                        >
+                            {{#each clientes}}
+                                <option value="{{id_cliente}}">{{nome}}</option>
+                            {{else}}
+                                <option value="">Nenhum cliente registrado</option>
+                            {{/each}}
+                        </select>
+                        <br />
+                        <br />
+                        <button type="submit" class="btn btn-success">Criar
+                            Veículo</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

@@ -5,7 +5,8 @@
   "author": "DrK-ToN <everton.drk@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "build": "npm run build --if-present"
   },
   "devDependencies": {
     "body-parser": "^1.20.3",
@@ -17,5 +18,9 @@
     "pg": "^8.13.1",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.5"
+  },
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "express-session": "^1.18.2"
   }
 }

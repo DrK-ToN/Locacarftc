@@ -1,0 +1,66 @@
+{{! views/admin/cliente/addcliente.hbs }}
+<main>
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h3> Novo Cliente: </h3>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/rota_cliente/cliente/novo" method="POST">
+                        <label for="nome">Nome: </label>
+                        <input
+                            type="text"
+                            id="nome"
+                            name="nome"
+                            placeholder="Nome completo do cliente"
+                            class="form-control"
+                        />
+                        <br />
+
+                        <label for="cpf">CPF: </label>
+                        <input
+                            type="text"
+                            id="cpf"
+                            name="cpf"
+                            placeholder="123.456.789-00"
+                            class="form-control"
+                        />
+                        <br />
+
+                        <label for="idade">Idade: </label>
+                        <input
+                            type="number"
+                            id="idade"
+                            name="idade"
+                            placeholder="Idade do cliente"
+                            class="form-control"
+                        />
+                        <br />
+
+                        <label for="telefone">Telefone: </label>
+                        <input
+                            type="text"
+                            id="telefone"
+                            name="telefone"
+                            placeholder="(11) 99999-9999"
+                            class="form-control"
+                        />
+                        <br />
+
+                        <label for="email">Email: </label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="email@exemplo.com"
+                            class="form-control"
+                        />
+                        <br />
+
+                        <button type="submit" class="btn btn-success">Cadastrar
+                            Cliente</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
