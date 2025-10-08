@@ -82,7 +82,7 @@ router.get("/historico/:id_cliente", (req, res) => {
             );
 
             res.render("admin/cliente/historico", {
-                cliente: cliente,
+                cliente: cliente.toJSON(),
             });
         })
         .catch((err) => {
