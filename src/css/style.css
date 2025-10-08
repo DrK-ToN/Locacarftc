@@ -1,0 +1,72 @@
+/* Paleta de Cores e Estilos Gerais */
+body {
+    background-color: #212529; /* Um cinza bem escuro para o fundo */
+    color: #f8f9fa; /* Texto principal branco */
+}
+
+/* Cor de destaque Laranja */
+.btn-orange {
+    background-color: #fd7e14; /* Laranja Bootstrap */
+    color: #fff;
+    border: none;
+}
+
+.btn-orange:hover {
+    background-color: #e86100;
+    color: #fff;
+}
+
+/* Cor de fundo para o filtro */
+.bg-dark-gray {
+    background-color: #343a40 !important; /* Cinza escuro */
+}
+
+/* Estilo do Card de Veículo */
+.vehicle-card {
+    background-color: #495057; /* Cinza um pouco mais claro */
+    color: #fff;
+    border: 1px solid #6c757d;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vehicle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.vehicle-card .card-header {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid #6c757d;
+}
+
+.vehicle-card .card-header .card-title {
+    color: #fd7e14; /* Título em Laranja */
+    font-weight: bold;
+}
+
+.vehicle-card .card-body strong {
+    color: #adb5bd; /* Rótulos em cinza claro */
+}
+
+.vehicle-card .card-footer {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid #6c757d;
+}
+
+/* Ajustes no formulário */
+.form-control, .form-select {
+    background-color: #6c757d;
+    border: 1px solid #899097;
+    color: #fff;
+}
+
+.form-control::placeholder {
+    color: #ced4da;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: #6c757d;
+    border-color: #fd7e14;
+    color: #fff;
+    box-shadow: 0 0 0 0.25rem rgba(253, 126, 20, 0.25);
+}
