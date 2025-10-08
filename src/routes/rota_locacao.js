@@ -27,24 +27,29 @@ router.get("/locacao/add", (req, res) => {
         });
 });
 
-// ROTA 2: Recebe os dados do formulário e cria a nova locação
+// ROTA 2: Recebe os dados do formulário e cria a nova locação (CORRIGIDA)
 router.post("/locacao/novo", (req, res) => {
+    // Pega os dados do formulário (req.body) e preenche o objeto para o create
     Locacao.create({
-        // ... seus dados da locação
+        fk_cliente: req.body.fk_cliente,
+        fk_veiculo: req.body.fk_veiculo,
+        data_inicio: req.body.data_inicio,
+        data_fim: req.body.data_fim || null, // Se data_fim vier vazio, salva como nulo
+        valor: req.body.valor,
     })
         .then((locacao) => {
+            // Depois de criar a locação, atualiza o status do veículo para indisponível
             return Veiculo.update(
                 { disponibilidade: false },
                 { where: { id_veiculo: req.body.fk_veiculo } }
             ).then(() => {
-                // --- ADICIONE ESTA LINHA ---
                 req.flash("success_msg", "Locação registrada com sucesso!");
-                // --- FIM DA LINHA ADICIONADA ---
-                res.redirect("/rota_locacao/historico/" + locacao.fk_cliente);
+                // Redireciona para o histórico usando o ID do cliente que veio do formulário
+                res.redirect("/rota_locacao/historico/" + req.body.fk_cliente);
             });
         })
         .catch((err) => {
-            // Você também pode criar uma mensagem de erro!
+            console.log("Erro ao salvar locação:", err); // É bom ter um log do erro no console
             req.flash(
                 "error_msg",
                 "Houve um erro ao registrar a locação. Tente novamente."
