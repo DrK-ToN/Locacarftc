@@ -77,7 +77,7 @@ db.sequelize
     });
 // --- FIM DO CÓDIGO DE SINCRONIZAÇÃO ---
 
-const port = 3000;
-app.listen(port, () => {
-    console.log(`Servidor rodando na porta http://localhost:${port}`);
+const PORT = process.env.PORT || 3000; // Usa a porta do Azure ou 3000 se não existir
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
 });
