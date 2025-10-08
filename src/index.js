@@ -44,7 +44,7 @@ app.set("views", path.join(__dirname, "views")); // Boa prática para definir o 
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "public")));
+
 
 // Rota principal
 app.get("/", (req, res) => {
