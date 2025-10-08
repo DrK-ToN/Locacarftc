@@ -66,21 +66,25 @@ router.get("/historico/:id_cliente", (req, res) => {
     })
         .then((cliente) => {
             if (!cliente) {
-                return res.send("Cliente não encontrado");
+                // ... (código igual)
             }
 
-            // --- ADICIONE ESTA LINHA PARA DEBUGGING ---
+            // A linha de console.log que já existe é MUITO importante.
+            // Verifique o que ela mostra no seu terminal.
             console.log(
                 "DADOS DO CLIENTE E LOCAÇÕES:",
                 JSON.stringify(cliente, null, 2)
             );
-            // --- FIM DA LINHA DE DEBUGGING ---
 
+            // ----- ALTERAÇÃO PRINCIPAL AQUI -----
+            // Remova o .toJSON() para passar o objeto completo do Sequelize
             res.render("admin/cliente/historico", {
-                cliente: cliente.toJSON(),
+                cliente: cliente, // Alterado de cliente.toJSON() para apenas cliente
             });
+            // ----- FIM DA ALTERAÇÃO -----
         })
         .catch((err) => {
+            console.log("Erro ao carregar histórico:", err); // Adicionado log de erro
             res.send("Erro ao carregar histórico: " + err);
         });
 });
