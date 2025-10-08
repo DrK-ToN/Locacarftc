@@ -24,7 +24,11 @@ const Locacao = db.sequelize.define(
             allowNull: false,
         },
     },
-    { freezeTableName: true }
+    {
+        tableName: "locacao",
+
+        freezeTableName: true,
+    }
 );
 
 // --- PARTE MAIS IMPORTANTE PARA CORRIGIR O ERRO ---
