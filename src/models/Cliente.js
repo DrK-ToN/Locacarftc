@@ -31,6 +31,9 @@ const Cliente = db.sequelize.define(
     {
         // Sequelize por padrão pluraliza os nomes da tabela.
         // freezeTableName: true faz com que o nome da tabela seja exatamente 'cliente'
+
+        tableName: "cliente",
+
         freezeTableName: true,
     }
 );

@@ -40,6 +40,8 @@ const Veiculo = db.sequelize.define(
         // A chave estrangeira fk_cliente será criada automaticamente pela associação abaixo
     },
     {
+        tableName: "veiculo",
+
         freezeTableName: true,
     }
 );
