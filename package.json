@@ -1,12 +1,11 @@
 {
-  "name": "sistema_escolar",
+  "name": "locacarftc",
   "version": "1.0.0",
   "main": "index.js",
   "author": "DrK-ToN <everton.drk@gmail.com>",
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "build": "npm run build --if-present"
   },
   "devDependencies": {
     "body-parser": "^1.20.3",
