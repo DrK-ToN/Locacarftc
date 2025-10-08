@@ -48,6 +48,9 @@ app.engine(
 
                 return `${day}/${month}/${year}`;
             },
+            eq: (a, b) => {
+                return a === b;
+            },
         },
     })
 );
