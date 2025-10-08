@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const exphbs = require("express-handlebars"); // ✅ Mantenha apenas esta importação
+const { engine } = require("express-handlebars"); // ✅ Mantenha apenas esta importação
 const bodyParser = require("body-parser");
 const rota_cliente = require("./routes/rota_cliente");
 const rota_veiculos = require("./routes/rota_veiculos");
@@ -26,25 +26,37 @@ app.use((req, res, next) => {
     next();
 });
 
-// Configuração do Handlebars com o helper 'eq'
-const hbs = exphbs.create({
-    defaultLayout: "main",
-    extname: ".hbs",
-    helpers: {
-        eq: function (a, b) {
-            return a === b;
-        },
-    },
-});
+// --- CONFIGURAÇÃO DO HANDLEBARS COM O HELPER ---
+app.engine(
+    "hbs",
+    engine({
+        defaultLayout: "main",
+        extname: ".hbs",
+        helpers: {
+            formatDate: (date) => {
+                if (!date) {
+                    return "";
+                }
+                // Cria um novo objeto de data
+                const d = new Date(date);
+                // Pega o dia e garante que tenha dois dígitos (ex: 05)
+                const day = String(d.getDate()).padStart(2, "0");
+                // Pega o mês (getMonth() é base 0, então somamos 1) e garante dois dígitos
+                const month = String(d.getMonth() + 1).padStart(2, "0");
+                // Pega o ano
+                const year = d.getFullYear();
 
-// ✅ Diz ao Express para USAR o Handlebars com a configuração que você criou
-app.engine(".hbs", hbs.engine);
+                return `${day}/${month}/${year}`;
+            },
+        },
+    })
+);
+
 app.set("view engine", ".hbs");
 app.set("views", path.join(__dirname, "views")); // Boa prática para definir o caminho das views
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
 
 // Rota principal
 app.get("/", (req, res) => {

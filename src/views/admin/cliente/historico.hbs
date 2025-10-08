@@ -26,9 +26,15 @@
                                 {{veiculo.modelo}}
                                 - Placa:
                                 {{veiculo.placa}}</h4>
-                            <p><b>Data de Início:</b> {{data_inicio}}</p>
+
+                            <p><b>Data de Início:</b>
+                                {{formatDate data_inicio}}</p>
+
                             <p><b>Data de Fim:</b>
-                                {{#if data_fim}}{{data_fim}}{{else}}Em andamento{{/if}}</p>
+                                {{#if data_fim}}{{formatDate
+                                        data_fim
+                                    }}{{else}}Em andamento{{/if}}</p>
+
                             <p><b>Valor:</b> R$ {{valor}}</p>
                         </div>
                     </div>
