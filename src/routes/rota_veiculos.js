@@ -113,7 +113,7 @@ router.post("/veiculos/editar_veiculos", (req, res) => {
 });
 
 // Rota para deletar um veículo
-router.get("/deletar_veiculo/:id", (req, res) => {
+router.get("/deletar_veiculos/:id", (req, res) => {
     Veiculo.destroy({ where: { id_veiculo: req.params.id } })
         .then(() => {
             res.redirect("/rota_veiculos/veiculos");
