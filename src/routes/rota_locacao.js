@@ -64,6 +64,7 @@ router.get("/historico/:id_cliente", (req, res) => {
         include: [
             {
                 model: Locacao,
+                as: "locacoes",
                 include: [Veiculo],
             },
         ],
