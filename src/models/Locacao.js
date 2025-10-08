@@ -34,16 +34,16 @@ const Locacao = db.sequelize.define(
 // --- PARTE MAIS IMPORTANTE PARA CORRIGIR O ERRO ---
 
 // Relação 1: Informa que uma Locação pertence a um Cliente.
-// Isso usa a coluna 'fk_cliente' que já existe na sua tabela.
 Locacao.belongsTo(Cliente, { foreignKey: "fk_cliente" });
 
 // Relação 2 (Inversa): Informa que um Cliente pode ter várias Locações.
-// É esta linha que permite o uso do "include" na consulta de Cliente.
-Cliente.hasMany(Locacao, { foreignKey: "fk_cliente" });
+// ----- ADICIONE A OPÇÃO 'as' AQUI -----
+Cliente.hasMany(Locacao, { foreignKey: "fk_cliente", as: "locacoes" });
 
-// Associações com Veículo (já devem estar aí, mas vamos garantir)
+// Associações com Veículo
 Locacao.belongsTo(Veiculo, { foreignKey: "fk_veiculo" });
-Veiculo.hasMany(Locacao, { foreignKey: "fk_veiculo" });
+// Adicione um alias aqui também para consistência (boa prática)
+Veiculo.hasMany(Locacao, { foreignKey: "fk_veiculo", as: "locacoes" });
 
 // --- FIM DA PARTE IMPORTANTE ---
 
